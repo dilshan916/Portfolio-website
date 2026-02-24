@@ -15,7 +15,6 @@ const techItems = [
     { name: "Premiere Pro", icon: "🎥" },
 ];
 
-// Duplicate for seamless infinite loop
 const marqueeItems = [...techItems, ...techItems];
 
 export default function TechStack() {
@@ -27,14 +26,10 @@ export default function TechStack() {
                 </div>
             </SectionReveal>
 
-            {/* Marquee container */}
             <div className="relative">
-                {/* Left fade mask */}
                 <div className="absolute left-0 top-0 bottom-0 w-16 sm:w-24 md:w-40 bg-gradient-to-r from-[#050505] to-transparent z-10 pointer-events-none" />
-                {/* Right fade mask */}
                 <div className="absolute right-0 top-0 bottom-0 w-16 sm:w-24 md:w-40 bg-gradient-to-l from-[#050505] to-transparent z-10 pointer-events-none" />
 
-                {/* Scrolling track — hardware accelerated with will-change + translate3d */}
                 <motion.div
                     className="flex gap-4 sm:gap-6 md:gap-8 w-max will-change-transform"
                     animate={{ x: ["0%", "-50%"] }}

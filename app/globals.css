@@ -21,7 +21,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Hide scrollbar for cleaner look */
 ::-webkit-scrollbar {
   width: 6px;
 }
@@ -39,9 +38,6 @@ body {
   background: rgba(168, 85, 247, 0.5);
 }
 
-/* ========= Premium Utility Classes ========= */
-
-/* Glassmorphism card — blur only on desktop, plain on mobile */
 .glass-card {
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.05);
@@ -54,7 +50,6 @@ body {
   }
 }
 
-/* Text gradient utility */
 .text-gradient {
   background: linear-gradient(135deg, #60a5fa, #a855f7, #ec4899);
   -webkit-background-clip: text;
@@ -62,7 +57,6 @@ body {
   color: transparent;
 }
 
-/* Animated gradient shift - used on the hero "digital" text + top border line */
 .animate-gradient-shift {
   animation: gradient-shift 4s ease-in-out infinite;
   background-size: 200% auto;
@@ -82,13 +76,11 @@ body {
   }
 }
 
-/* Selection styling */
 ::selection {
   background: rgba(236, 72, 153, 0.3);
   color: #fff;
 }
 
-/* Smooth focus outlines for accessibility */
 :focus-visible {
   outline: 2px solid rgba(168, 85, 247, 0.6);
   outline-offset: 2px;

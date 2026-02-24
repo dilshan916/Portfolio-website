@@ -25,7 +25,6 @@ import SectionReveal from "./components/SectionReveal";
 import TechStack from "./components/TechStack";
 import ContactForm from "./components/ContactForm";
 
-// Freelancer SVG Component
 const FreelancerIcon = ({ className }: { className?: string }) => (
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
         <path d="M12 2L2 7l10 5 10-5-10-5Z" />
@@ -34,7 +33,6 @@ const FreelancerIcon = ({ className }: { className?: string }) => (
     </svg>
 )
 
-// Fiverr SVG Component
 const FiverrIcon = ({ className }: { className?: string }) => (
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 100 100" className={className}>
         <path fill="currentColor" d="M85,76.5h-10.4V43.8c0-5-3.3-6.5-5.9-6.5c-3.9,0-7.2,3-7.2,8.5v30.7H51.2V43.8c0-5-3.3-6.5-5.9-6.5c-3.9,0-7.2,3-7.2,8.5v30.7H27.7V17c0-2.6,2.6-4.9,5.2-4.9h26.4v13.4c2.6-3.6,7.2-6.2,12.7-6.2c4.9,0,9.1,2.3,11.4,6.2C85.7,21.9,90.2,19.2,95.1,19.2c7.8,0,13.7,5.5,13.7,16.6v40.7H98.5V40.5c0-4.2-2-5.5-4.2-5.5c-2.9,0-5.5,2.6-5.5,6.5V76.5zM17.2,29.9c0-4.5-3.6-8.1-8.1-8.1S1,25.4,1,29.9s3.6,8.1,8.1,8.1S17.2,34.4,17.2,29.9z" transform="translate(-1, 8) scale(0.9)" />
@@ -42,7 +40,6 @@ const FiverrIcon = ({ className }: { className?: string }) => (
     </svg>
 )
 
-// Enhanced Animation Variants
 const staggerContainer = {
     animate: {
         transition: {
@@ -94,7 +91,6 @@ const colorThemes = [
     }
 ];
 
-// Magnetic social link component
 function MagneticLink({ children, href, target, rel, className, hoverColor }: {
     children: React.ReactNode;
     href: string;
@@ -125,7 +121,6 @@ export default function ClientHome({ projects, socialLinks }: { projects: any[],
         offset: ["start start", "end start"]
     });
 
-    // Parallax for hero text
     const heroY = useTransform(scrollYProgress, [0, 1], [0, 150]);
     const heroOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
 
@@ -141,15 +136,11 @@ export default function ClientHome({ projects, socialLinks }: { projects: any[],
     return (
         <div className="min-h-screen bg-[#050505] text-white selection:bg-pink-500/30 overflow-x-hidden font-sans w-full max-w-full">
 
-            {/* Custom Cursor */}
             <CustomCursor />
-
-            {/* Animated Mesh Background */}
             <AnimatedBackground />
 
             <main className="relative z-10 container mx-auto px-4 sm:px-6 md:px-12 lg:px-24">
 
-                {/* Navbar */}
                 <header className="flex justify-between items-center py-5 md:py-8">
                     <motion.div
                         initial={{ opacity: 0, x: -20 }}
@@ -172,7 +163,6 @@ export default function ClientHome({ projects, socialLinks }: { projects: any[],
                     </motion.a>
                 </header>
 
-                {/* Hero Section — with parallax */}
                 <section ref={heroRef} className="min-h-[85vh] flex flex-col justify-center items-start pt-6 sm:pt-10 pb-16 sm:pb-24 md:pb-32 relative">
                     <motion.div
                         style={{ y: heroY, opacity: heroOpacity }}
@@ -228,7 +218,6 @@ export default function ClientHome({ projects, socialLinks }: { projects: any[],
                         </motion.div>
                     </motion.div>
 
-                    {/* Scroll indicator */}
                     <motion.div
                         className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
                         initial={{ opacity: 0 }}
@@ -250,10 +239,8 @@ export default function ClientHome({ projects, socialLinks }: { projects: any[],
                     </motion.div>
                 </section>
 
-                {/* Tech Stack Marquee */}
                 <TechStack />
 
-                {/* Skills Section */}
                 <section id="skills" className="py-16 sm:py-20 md:py-32 relative">
                     <SectionReveal>
                         <div className="mb-10 md:mb-16 text-center md:text-left">
@@ -293,7 +280,6 @@ export default function ClientHome({ projects, socialLinks }: { projects: any[],
                     </motion.div>
                 </section>
 
-                {/* Projects Section */}
                 <section id="projects" className="py-16 sm:py-20 md:py-32 border-t border-dashed border-white/10">
                     <SectionReveal>
                         <div className="mb-10 sm:mb-14 md:mb-20 flex flex-col md:flex-row md:items-end justify-between gap-4 md:gap-6">
@@ -321,7 +307,6 @@ export default function ClientHome({ projects, socialLinks }: { projects: any[],
                                         className="h-full"
                                     >
                                         <div className="group flex flex-col h-full rounded-2xl sm:rounded-[2rem] overflow-hidden bg-black/50 md:backdrop-blur-md border border-white/10 hover:border-white/20 transition-colors duration-500">
-                                            {/* 16:9 Image Container */}
                                             <div className="relative w-full aspect-video overflow-hidden bg-gray-900/80 border-b border-white/5">
                                                 <div className={`absolute inset-0 bg-gradient-to-br ${theme.gradient} opacity-10 group-hover:opacity-30 transition-opacity duration-700 z-0`}></div>
 
@@ -342,15 +327,12 @@ export default function ClientHome({ projects, socialLinks }: { projects: any[],
                                                     </div>
                                                 )}
 
-                                                {/* Decorative shapes */}
                                                 <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full blur-2xl transform translate-x-1/2 -translate-y-1/2 z-0"></div>
                                                 <div className="absolute bottom-0 left-0 w-32 h-32 bg-black/40 rounded-full blur-2xl transform -translate-x-1/2 translate-y-1/2 z-0"></div>
 
-                                                {/* Top gradient overlay for depth */}
                                                 <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/60 to-transparent z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                                             </div>
 
-                                            {/* Card Content */}
                                             <div className="p-5 sm:p-6 md:p-8 flex flex-col flex-grow relative z-10">
                                                 <h3 className={`text-lg sm:text-xl md:text-2xl font-bold text-white mb-2 sm:mb-3 group-hover:${theme.accentText} transition-colors duration-300`}>{project.title}</h3>
                                                 <p className="text-neutral-400 text-xs sm:text-sm leading-relaxed line-clamp-3 mb-4 sm:mb-6 flex-grow">{project.description}</p>
@@ -365,7 +347,6 @@ export default function ClientHome({ projects, socialLinks }: { projects: any[],
                                                     </div>
                                                 )}
 
-                                                {/* CTA */}
                                                 <div className="mt-auto pt-5 border-t border-white/5 flex items-center justify-between text-sm font-medium text-neutral-500 group-hover:text-white transition-colors duration-300">
                                                     <span className="flex items-center gap-2">
                                                         View Details
@@ -392,17 +373,13 @@ export default function ClientHome({ projects, socialLinks }: { projects: any[],
                     )}
                 </section>
 
-                {/* Contact Section */}
                 <section id="contact" className="py-16 sm:py-20 md:py-32 text-center overflow-hidden relative">
-
-                    {/* Background Glow */}
                     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-3xl h-full max-h-[500px] bg-gradient-to-r from-purple-500/10 to-pink-500/10 blur-[100px] rounded-full pointer-events-none" />
 
                     <SectionReveal>
                         <motion.div
                             className="relative z-10 max-w-4xl mx-auto bg-white/[0.04] md:backdrop-blur-2xl p-6 sm:p-10 md:p-16 rounded-2xl sm:rounded-[2rem] md:rounded-[3rem] border border-white/10 shadow-2xl group overflow-hidden"
                         >
-                            {/* Subtle animated gradient line at top of card */}
                             <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-purple-500/50 to-transparent animate-gradient-shift bg-[length:200%_auto]" />
 
                             <h2 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 md:mb-8 bg-gradient-to-b from-white to-white/60 bg-clip-text text-transparent">Let&apos;s work together.</h2>
@@ -410,10 +387,8 @@ export default function ClientHome({ projects, socialLinks }: { projects: any[],
                                 Whether you need a mobile app, video production, or a complete brand overhaul — drop me a message and I&apos;ll get back to you.
                             </p>
 
-                            {/* Working Contact Form */}
                             <ContactForm />
 
-                            {/* Social Links below form */}
                             <div className="mt-10 sm:mt-14 md:mt-16 pt-8 border-t border-white/5">
                                 <p className="text-neutral-500 text-xs sm:text-sm mb-4 font-medium tracking-wider uppercase">Or find me on</p>
                                 <div className="flex flex-wrap justify-center gap-2 sm:gap-3 md:gap-4 text-neutral-500">
@@ -453,7 +428,6 @@ export default function ClientHome({ projects, socialLinks }: { projects: any[],
                     </SectionReveal>
                 </section>
 
-                {/* Footer */}
                 <SectionReveal delay={0.1}>
                     <footer className="py-8 sm:py-10 md:py-12 text-center text-neutral-600 text-xs sm:text-sm border-t border-white/5 px-4">
                         <p>© {new Date().getFullYear()} Dilshan Madushankha. All rights reserved.</p>

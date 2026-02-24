@@ -24,31 +24,26 @@ export default function TiltCard({
 }: TiltCardProps) {
     const ref = useRef<HTMLDivElement>(null);
     const [isHovered, setIsHovered] = useState(false);
-    const [isMobile, setIsMobile] = useState(true); // Default to mobile (no effects) until detected
+    const [isMobile, setIsMobile] = useState(true);
 
     useEffect(() => {
         const mobile = !window.matchMedia("(pointer: fine)").matches;
         setIsMobile(mobile);
     }, []);
 
-    // Mouse position on the card (0 to 1)
     const mouseX = useMotionValue(0.5);
     const mouseY = useMotionValue(0.5);
 
-    // Spring smoothing for tilt
     const springConfig = { damping: 20, stiffness: 200 };
     const smoothMouseX = useSpring(mouseX, springConfig);
     const smoothMouseY = useSpring(mouseY, springConfig);
 
-    // Transform mouse position to rotation
     const rotateX = useTransform(smoothMouseY, [0, 1], [8, -8]);
     const rotateY = useTransform(smoothMouseX, [0, 1], [-8, 8]);
 
-    // Glowing gradient position
     const glowX = useTransform(smoothMouseX, [0, 1], [0, 100]);
     const glowY = useTransform(smoothMouseY, [0, 1], [0, 100]);
 
-    // Build the glow background as a MotionValue<string>
     const glowBackground = useTransform(
         glowX,
         (xVal) => {
@@ -88,7 +83,6 @@ export default function TiltCard({
         mouseY.set(0.5);
     };
 
-    // On mobile: simple card with scroll-reveal only, no tilt/glow
     const cardStyle: MotionStyle = isMobile
         ? {}
         : {
@@ -114,7 +108,6 @@ export default function TiltCard({
             }}
             style={cardStyle}
         >
-            {/* Glowing border & shine — desktop only */}
             {!isMobile && (
                 <>
                     <motion.div
@@ -139,7 +132,6 @@ export default function TiltCard({
                 </>
             )}
 
-            {/* Card container */}
             <div className="relative z-[2] h-full" style={{ transform: "translateZ(0)" }}>
                 {children}
             </div>

@@ -36,7 +36,6 @@ export default function ContactForm() {
                 setName("");
                 setEmail("");
                 setMessage("");
-                // Reset to idle after 5 seconds
                 setTimeout(() => setStatus("idle"), 5000);
             } else {
                 setStatus("error");
@@ -50,7 +49,6 @@ export default function ContactForm() {
 
     return (
         <form onSubmit={handleSubmit} className="w-full max-w-xl mx-auto text-left space-y-5 sm:space-y-6">
-            {/* Name */}
             <div className="group">
                 <label htmlFor="contact-name" className="block text-neutral-400 text-xs sm:text-sm font-medium mb-2 tracking-wide uppercase">
                     Name
@@ -67,7 +65,6 @@ export default function ContactForm() {
                 />
             </div>
 
-            {/* Email */}
             <div className="group">
                 <label htmlFor="contact-email" className="block text-neutral-400 text-xs sm:text-sm font-medium mb-2 tracking-wide uppercase">
                     Email
@@ -84,7 +81,6 @@ export default function ContactForm() {
                 />
             </div>
 
-            {/* Message */}
             <div className="group">
                 <label htmlFor="contact-message" className="block text-neutral-400 text-xs sm:text-sm font-medium mb-2 tracking-wide uppercase">
                     Message
@@ -101,7 +97,6 @@ export default function ContactForm() {
                 />
             </div>
 
-            {/* Submit Button */}
             <motion.button
                 type="submit"
                 disabled={status === "loading" || status === "success"}

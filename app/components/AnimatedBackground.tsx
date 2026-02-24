@@ -41,7 +41,6 @@ const orbs = [
     },
 ];
 
-// Mobile: only 2 orbs, static, NO blur, NO blend mode
 const mobileOrbs = [orbs[0], orbs[1]];
 
 export default function AnimatedBackground() {
@@ -61,18 +60,14 @@ export default function AnimatedBackground() {
 
     return (
         <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
-            {/* Subtle Grid Pattern — hidden on mobile to save GPU compositing */}
             <div className="absolute inset-0 hidden md:block bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]" />
 
-            {/* Noise texture overlay — HIDDEN on mobile (SVG filter kills mobile GPU) */}
             <div className="absolute inset-0 hidden md:block opacity-[0.015]" style={{
                 backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
             }} />
 
-            {/* Orbs */}
             {activeOrbs.map((orb, index) => (
                 shouldAnimate ? (
-                    // Desktop: full blur + blend mode + animation
                     <motion.div
                         key={index}
                         className={`absolute ${orb.size} ${orb.color} ${orb.position} rounded-full blur-[120px] mix-blend-screen will-change-transform`}
@@ -91,7 +86,6 @@ export default function AnimatedBackground() {
                         }}
                     />
                 ) : (
-                    // Mobile: NO blur, NO mix-blend-mode — just a plain opacity color div
                     <div
                         key={index}
                         className={`absolute ${orb.size} ${orb.color} ${orb.position} rounded-full opacity-30`}
@@ -99,7 +93,6 @@ export default function AnimatedBackground() {
                 )
             ))}
 
-            {/* Radial vignette */}
             <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,#050505_75%)]" />
         </div>
     );

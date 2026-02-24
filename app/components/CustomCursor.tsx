@@ -11,24 +11,20 @@ export default function CustomCursor() {
     const cursorX = useMotionValue(-100);
     const cursorY = useMotionValue(-100);
 
-    // Spring physics for smooth following
     const springConfig = { damping: 25, stiffness: 200, mass: 0.5 };
     const smoothX = useSpring(cursorX, springConfig);
     const smoothY = useSpring(cursorY, springConfig);
 
-    // Outer ring (even smoother / lagging)
     const outerConfig = { damping: 30, stiffness: 120, mass: 1 };
     const outerX = useSpring(cursorX, outerConfig);
     const outerY = useSpring(cursorY, outerConfig);
 
     useEffect(() => {
-        // Only show custom cursor on devices with fine pointers (not touch)
         const hasPointer = window.matchMedia("(pointer: fine)").matches;
         setIsMobile(!hasPointer);
 
         if (!hasPointer) return;
 
-        // Hide the default cursor
         document.body.style.cursor = "none";
         document.documentElement.style.cursor = "none";
 
@@ -43,7 +39,6 @@ export default function CustomCursor() {
 
         window.addEventListener("mousemove", moveCursor);
 
-        // Setup interactive element tracking with MutationObserver for dynamic elements
         const setupListeners = () => {
             const interactiveElements = document.querySelectorAll(
                 "a, button, [role='button'], input, textarea, select, .cursor-hover"
@@ -57,7 +52,6 @@ export default function CustomCursor() {
 
         let elements = setupListeners();
 
-        // Re-attach listeners when DOM changes
         const observer = new MutationObserver(() => {
             elements.forEach((el) => {
                 el.removeEventListener("mouseenter", handleMouseEnterInteractive);
@@ -84,7 +78,6 @@ export default function CustomCursor() {
 
     return (
         <>
-            {/* Inner dot */}
             <motion.div
                 className="fixed top-0 left-0 z-[9999] pointer-events-none mix-blend-difference"
                 style={{
@@ -102,7 +95,6 @@ export default function CustomCursor() {
                 <div className="w-3 h-3 bg-white rounded-full" />
             </motion.div>
 
-            {/* Outer glowing ring */}
             <motion.div
                 className="fixed top-0 left-0 z-[9998] pointer-events-none"
                 style={{
@@ -120,7 +112,6 @@ export default function CustomCursor() {
                 <div className="w-10 h-10 rounded-full border border-purple-400/50 bg-purple-500/10 backdrop-blur-sm shadow-[0_0_20px_rgba(168,85,247,0.3)]" />
             </motion.div>
 
-            {/* Glow trail */}
             <motion.div
                 className="fixed top-0 left-0 z-[9997] pointer-events-none"
                 style={{
