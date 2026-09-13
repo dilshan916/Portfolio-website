@@ -2,6 +2,8 @@
 
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
+import IndustrialSkills from "./components/IndustrialSkills";
+import ITAndTechSkills from "./components/ITAndTechSkills";
 import {
     ArrowDownCircle,
     Github,
@@ -114,7 +116,7 @@ function MagneticLink({ children, href, target, rel, className, hoverColor }: {
     );
 }
 
-export default function ClientHome({ projects, socialLinks }: { projects: any[], socialLinks?: any }) {
+export default function ClientHome({ projects, socialLinks, resumeUrl }: { projects: any[], socialLinks?: any, resumeUrl?: string }) {
     const heroRef = useRef<HTMLElement>(null);
     const { scrollYProgress } = useScroll({
         target: heroRef,
@@ -175,25 +177,25 @@ export default function ClientHome({ projects, socialLinks }: { projects: any[],
                         >
                             <motion.div variants={fadeInUpSpring} className="flex items-center gap-3 mb-4 sm:mb-6 md:mb-8">
                                 <span className="h-[2px] w-8 sm:w-12 bg-gradient-to-r from-purple-500 to-pink-500"></span>
-                                <span className="text-gray-300 font-medium tracking-widest text-xs sm:text-sm uppercase">Creative + Tech</span>
+                                <span className="text-gray-300 font-medium tracking-widest text-xs sm:text-sm uppercase">Engineering + Technology</span>
                             </motion.div>
 
                             <motion.h1 variants={fadeInUpSpring} className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold leading-[1.1] mb-5 sm:mb-6 md:mb-8 tracking-tight">
-                                I build <span className="bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 text-transparent bg-clip-text inline-block animate-gradient-shift bg-[length:200%_auto]">digital</span> <br />
+                                I engineer <span className="bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 text-transparent bg-clip-text inline-block animate-gradient-shift bg-[length:200%_auto]">industrial</span> <br />
                                 <span className="relative">
-                                    experiences.
+                                    solutions.
                                     <svg className="absolute w-full h-3 -bottom-1 left-0 text-purple-500/50" viewBox="0 0 200 9" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2.00025 6.99997C25.7535 2.16909 51.5273 2.05929 74.2003 4.97624C83.2721 6.14328 100.22 8.7849 101 9C104.992 7.74971 123.011 3.52554 133 3.00002C150.315 2.08888 172.937 4.90806 181 9" stroke="currentColor" strokeWidth="3" strokeLinecap="round" /></svg>
                                 </span>
                             </motion.h1>
 
                             <motion.p variants={fadeInUpSpring} className="text-base sm:text-lg md:text-2xl text-neutral-400 max-w-3xl leading-relaxed mb-8 sm:mb-10 md:mb-12">
-                                Hi, I&apos;m Dilshan. A Multi-Disciplinary Professional blending creative vision with technical execution.
-                                Specializing in <span className="text-white font-semibold decoration-purple-500/50 underline underline-offset-4">Video Editing</span>, <span className="text-white font-semibold decoration-pink-500/50 underline underline-offset-4">UI/UX Design</span>, and <span className="text-white font-semibold decoration-blue-500/50 underline underline-offset-4">Mobile App Development</span>.
+                                Hi, I&apos;m Dilshan. A Multi-Disciplinary Professional bridging hands-on mechanical precision with modern manufacturing operations.
+                                Specializing in <span className="text-white font-semibold decoration-purple-500/50 underline underline-offset-4">Conventional Machining</span>, <span className="text-white font-semibold decoration-pink-500/50 underline underline-offset-4">Production Technology</span>, and <span className="text-white font-semibold decoration-blue-500/50 underline underline-offset-4">IT Systems Diagnostics</span>.
                             </motion.p>
 
                             <motion.div variants={fadeInUpSpring} className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-5 w-full sm:w-auto">
                                 <motion.a
-                                    href="/dilshan_cv.pdf?v=updated"
+                                    href={resumeUrl || "/dilshan_cv.pdf?v=updated"}
                                     download
                                     whileHover={hoverScale}
                                     whileTap={{ scale: 0.95 }}
@@ -279,6 +281,12 @@ export default function ClientHome({ projects, socialLinks }: { projects: any[],
                         ))}
                     </motion.div>
                 </section>
+
+                {/* Industrial & Engineering Skills */}
+                <IndustrialSkills />
+
+                {/* IT & Systems Infrastructure */}
+                <ITAndTechSkills />
 
                 <section id="projects" className="py-16 sm:py-20 md:py-32 border-t border-dashed border-white/10">
                     <SectionReveal>

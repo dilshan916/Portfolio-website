@@ -13,11 +13,16 @@ export default async function Page() {
   }`;
 
   const socialQuery = `*[_type == "social"][0]`;
+  const resumeQuery = `*[_type == "resume"][0] {
+    "cvUrl": cvFile.asset->url
+  }`;
 
   const projects = await client.fetch(query);
   const socialLinks = await client.fetch(socialQuery) || {};
+  const resumeData = await client.fetch(resumeQuery);
+  const resumeUrl = resumeData?.cvUrl ? `${resumeData.cvUrl}?dl=Dilshan_CV.pdf` : "/dilshan_cv.pdf?v=updated";
 
   console.log("Fetched Projects:", projects);
 
-  return <ClientHome projects={projects} socialLinks={socialLinks} />;
+  return <ClientHome projects={projects} socialLinks={socialLinks} resumeUrl={resumeUrl} />;
 }
