@@ -39,15 +39,8 @@ body {
 }
 
 .glass-card {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-@media (min-width: 768px) {
-  .glass-card {
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-  }
+  background: #0d0d0d;
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .text-gradient {
@@ -57,23 +50,18 @@ body {
   color: transparent;
 }
 
-.animate-gradient-shift {
-  animation: gradient-shift 4s ease-in-out infinite;
-  background-size: 200% auto;
+@keyframes marquee {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
 }
 
-@keyframes gradient-shift {
-  0% {
-    background-position: 0% center;
-  }
-
-  50% {
-    background-position: 100% center;
-  }
-
-  100% {
-    background-position: 0% center;
-  }
+.animate-marquee {
+  animation: marquee 35s linear infinite;
+  will-change: transform;
 }
 
 ::selection {

@@ -1,7 +1,6 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { motion } from "framer-motion";
 import IndustrialSkills from "./components/IndustrialSkills";
 import ITAndTechSkills from "./components/ITAndTechSkills";
 import {
@@ -92,38 +91,27 @@ const colorThemes = [
     }
 ];
 
-function MagneticLink({ children, href, target, rel, className, hoverColor }: {
+function MagneticLink({ children, href, target, rel, className }: {
     children: React.ReactNode;
     href: string;
     target?: string;
     rel?: string;
     className?: string;
-    hoverColor: string;
+    hoverColor?: string;
 }) {
     return (
-        <motion.a
+        <a
             href={href}
             target={target}
             rel={rel}
-            className={`relative p-3 rounded-2xl transition-colors hover:bg-white/5 ${className}`}
-            whileHover={{ y: -6, scale: 1.15, color: hoverColor }}
-            whileTap={{ scale: 0.9 }}
-            transition={{ type: "spring", stiffness: 400, damping: 15 }}
+            className={`relative p-3 rounded-2xl transition-all duration-200 hover:-translate-y-1 hover:bg-white/5 ${className}`}
         >
             {children}
-        </motion.a>
+        </a>
     );
 }
 
 export default function ClientHome({ projects, socialLinks, resumeUrl }: { projects: any[], socialLinks?: any, resumeUrl?: string }) {
-    const heroRef = useRef<HTMLElement>(null);
-    const { scrollYProgress } = useScroll({
-        target: heroRef,
-        offset: ["start start", "end start"]
-    });
-
-    const heroY = useTransform(scrollYProgress, [0, 1], [0, 150]);
-    const heroOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
 
     const skills = [
         { name: "Adobe Premiere Pro", icon: <MonitorPlay className="w-5 h-5 sm:w-6 sm:h-6" />, category: "Video" },
@@ -163,11 +151,8 @@ export default function ClientHome({ projects, socialLinks, resumeUrl }: { proje
                     </motion.a>
                 </header>
 
-                <section ref={heroRef} className="min-h-[85vh] flex flex-col justify-center items-start pt-6 sm:pt-10 pb-16 sm:pb-24 md:pb-32 relative">
-                    <motion.div
-                        style={{ y: heroY, opacity: heroOpacity }}
-                        className="max-w-5xl"
-                    >
+                <section className="min-h-[85vh] flex flex-col justify-center items-start pt-6 sm:pt-10 pb-16 sm:pb-24 md:pb-32 relative">
+                    <div className="max-w-5xl">
                         <motion.div
                             initial="initial"
                             animate="animate"
@@ -179,7 +164,7 @@ export default function ClientHome({ projects, socialLinks, resumeUrl }: { proje
                             </motion.div>
 
                             <motion.h1 variants={fadeInUpSpring} className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold leading-[1.1] mb-5 sm:mb-6 md:mb-8 tracking-tight">
-                                I engineer <span className="bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 text-transparent bg-clip-text inline-block animate-gradient-shift bg-[length:200%_auto]">industrial</span> <br />
+                                I engineer <span className="bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 text-transparent bg-clip-text inline-block">industrial</span> <br />
                                 <span className="relative">
                                     solutions.
                                     <svg className="absolute w-full h-3 -bottom-1 left-0 text-purple-500/50" viewBox="0 0 200 9" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2.00025 6.99997C25.7535 2.16909 51.5273 2.05929 74.2003 4.97624C83.2721 6.14328 100.22 8.7849 101 9C104.992 7.74971 123.011 3.52554 133 3.00002C150.315 2.08888 172.937 4.90806 181 9" stroke="currentColor" strokeWidth="3" strokeLinecap="round" /></svg>
@@ -216,27 +201,14 @@ export default function ClientHome({ projects, socialLinks, resumeUrl }: { proje
                                 </motion.a>
                             </motion.div>
                         </motion.div>
-                    </motion.div>
+                    </div>
 
-                    <motion.div
-                        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ delay: 2, duration: 1 }}
-                    >
+                    <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 pointer-events-none opacity-50">
                         <span className="text-neutral-500 text-xs tracking-widest uppercase">Scroll</span>
-                        <motion.div
-                            className="w-5 h-8 rounded-full border border-white/20 flex items-start justify-center p-1.5"
-                            animate={{ opacity: [0.3, 0.7, 0.3] }}
-                            transition={{ duration: 2, repeat: Infinity }}
-                        >
-                            <motion.div
-                                className="w-1 h-1.5 bg-white/60 rounded-full"
-                                animate={{ y: [0, 12, 0] }}
-                                transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                            />
-                        </motion.div>
-                    </motion.div>
+                        <div className="w-5 h-8 rounded-full border border-white/20 flex items-start justify-center p-1.5">
+                            <div className="w-1 h-2 bg-white/60 rounded-full" />
+                        </div>
+                    </div>
                 </section>
 
                 <TechStack />
@@ -260,13 +232,7 @@ export default function ClientHome({ projects, socialLinks, resumeUrl }: { proje
                             <motion.div
                                 key={index}
                                 variants={fadeInUpSpring}
-                                whileHover={{
-                                    y: -8,
-                                    scale: 1.04,
-                                    boxShadow: "0 20px 40px -15px rgba(168, 85, 247, 0.15)",
-                                }}
-                                transition={{ type: "spring", stiffness: 300, damping: 15 }}
-                                className="glass-card p-4 sm:p-5 md:p-6 rounded-2xl sm:rounded-3xl flex flex-col items-center justify-center gap-3 sm:gap-4 md:gap-5 text-center group hover:bg-white/[0.06] transition-colors duration-300 border border-white/5 hover:border-white/15"
+                                className="glass-card p-4 sm:p-5 md:p-6 rounded-2xl sm:rounded-3xl flex flex-col items-center justify-center gap-3 sm:gap-4 md:gap-5 text-center group hover:bg-white/[0.06] hover:-translate-y-1.5 transition-all duration-200 border border-white/5 hover:border-white/20"
                             >
                                 <div className="p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-white/5 group-hover:bg-gradient-to-br group-hover:from-purple-500/20 group-hover:to-pink-500/20 transition-colors duration-500 ring-1 ring-white/10 group-hover:ring-purple-500/30">
                                     {skill.icon}
@@ -335,10 +301,7 @@ export default function ClientHome({ projects, socialLinks, resumeUrl }: { proje
                                                     </div>
                                                 )}
 
-                                                <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full blur-2xl transform translate-x-1/2 -translate-y-1/2 z-0"></div>
-                                                <div className="absolute bottom-0 left-0 w-32 h-32 bg-black/40 rounded-full blur-2xl transform -translate-x-1/2 translate-y-1/2 z-0"></div>
-
-                                                <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/60 to-transparent z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                                                <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/60 to-transparent z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                                             </div>
 
                                             <div className="p-5 sm:p-6 md:p-8 flex flex-col flex-grow relative z-10">
@@ -358,13 +321,9 @@ export default function ClientHome({ projects, socialLinks, resumeUrl }: { proje
                                                 <div className="mt-auto pt-5 border-t border-white/5 flex items-center justify-between text-sm font-medium text-neutral-500 group-hover:text-white transition-colors duration-300">
                                                     <span className="flex items-center gap-2">
                                                         View Details
-                                                        <motion.span
-                                                            className="inline-block"
-                                                            animate={{ x: [0, 4, 0] }}
-                                                            transition={{ duration: 1.5, repeat: Infinity, repeatDelay: 1 }}
-                                                        >
+                                                        <span className="inline-block transition-transform duration-200 group-hover:translate-x-1">
                                                             →
-                                                        </motion.span>
+                                                        </span>
                                                     </span>
                                                     <ExternalLink className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                                                 </div>
@@ -388,7 +347,7 @@ export default function ClientHome({ projects, socialLinks, resumeUrl }: { proje
                         <motion.div
                             className="relative z-10 max-w-4xl mx-auto bg-[#0a0a0a]/90 md:backdrop-blur-md p-6 sm:p-10 md:p-16 rounded-2xl sm:rounded-[2rem] md:rounded-[3rem] border border-white/10 shadow-2xl group overflow-hidden"
                         >
-                            <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-purple-500/50 to-transparent animate-gradient-shift bg-[length:200%_auto]" />
+                            <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-purple-500/50 to-transparent" />
 
                             <h2 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 md:mb-8 bg-gradient-to-b from-white to-white/60 bg-clip-text text-transparent">Let&apos;s work together.</h2>
                             <p className="text-neutral-400 mb-8 sm:mb-10 md:mb-12 text-sm sm:text-base md:text-xl max-w-2xl mx-auto leading-relaxed">

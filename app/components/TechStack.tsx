@@ -1,6 +1,3 @@
-"use client";
-
-import { motion } from "framer-motion";
 import SectionReveal from "./SectionReveal";
 
 const techItems = [
@@ -30,19 +27,7 @@ export default function TechStack() {
                 <div className="absolute left-0 top-0 bottom-0 w-16 sm:w-24 md:w-40 bg-gradient-to-r from-[#050505] to-transparent z-10 pointer-events-none" />
                 <div className="absolute right-0 top-0 bottom-0 w-16 sm:w-24 md:w-40 bg-gradient-to-l from-[#050505] to-transparent z-10 pointer-events-none" />
 
-                <motion.div
-                    className="flex gap-4 sm:gap-6 md:gap-8 w-max will-change-transform"
-                    animate={{ x: ["0%", "-50%"] }}
-                    transition={{
-                        x: {
-                            repeat: Infinity,
-                            repeatType: "loop",
-                            duration: 30,
-                            ease: "linear",
-                        },
-                    }}
-                    style={{ transform: "translate3d(0,0,0)" }}
-                >
+                <div className="flex gap-4 sm:gap-6 md:gap-8 w-max animate-marquee">
                     {marqueeItems.map((item, index) => (
                         <div
                             key={index}
@@ -52,7 +37,7 @@ export default function TechStack() {
                             <span className="text-neutral-300 group-hover:text-white text-xs sm:text-sm md:text-base font-medium transition-colors duration-300">{item.name}</span>
                         </div>
                     ))}
-                </motion.div>
+                </div>
             </div>
         </section>
     );
