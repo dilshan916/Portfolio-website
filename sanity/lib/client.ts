@@ -6,5 +6,5 @@ export const client = createClient({
   projectId,
   dataset,
   apiVersion,
-  useCdn: false, // Set to false to bypass Edge cache so updates reflect instantly in development
+  useCdn: true,
 })

@@ -46,7 +46,7 @@ export default function TechStack() {
                     {marqueeItems.map((item, index) => (
                         <div
                             key={index}
-                            className="flex items-center gap-2.5 sm:gap-3 px-5 sm:px-6 md:px-8 py-3 sm:py-3.5 md:py-4 rounded-full border border-white/10 bg-white/[0.03] md:backdrop-blur-sm hover:bg-white/[0.08] hover:border-white/20 transition-colors duration-300 group cursor-hover whitespace-nowrap select-none"
+                            className="flex items-center gap-2.5 sm:gap-3 px-5 sm:px-6 md:px-8 py-3 sm:py-3.5 md:py-4 rounded-full border border-white/10 bg-white/[0.03] hover:bg-white/[0.08] hover:border-white/20 transition-colors duration-300 group whitespace-nowrap select-none"
                         >
                             <span className="text-lg sm:text-xl md:text-2xl group-hover:scale-110 transition-transform duration-300">{item.icon}</span>
                             <span className="text-neutral-300 group-hover:text-white text-xs sm:text-sm md:text-base font-medium transition-colors duration-300">{item.name}</span>

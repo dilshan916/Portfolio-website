@@ -20,7 +20,6 @@ import {
     Phone,
     ExternalLink
 } from "lucide-react";
-import CustomCursor from "./components/CustomCursor";
 import AnimatedBackground from "./components/AnimatedBackground";
 import TiltCard from "./components/TiltCard";
 import SectionReveal from "./components/SectionReveal";
@@ -138,7 +137,6 @@ export default function ClientHome({ projects, socialLinks, resumeUrl }: { proje
     return (
         <div className="min-h-screen bg-[#050505] text-white selection:bg-pink-500/30 overflow-x-hidden font-sans w-full max-w-full">
 
-            <CustomCursor />
             <AnimatedBackground />
 
             <main className="relative z-10 container mx-auto px-4 sm:px-6 md:px-12 lg:px-24">
@@ -199,7 +197,7 @@ export default function ClientHome({ projects, socialLinks, resumeUrl }: { proje
                                     download
                                     whileHover={hoverScale}
                                     whileTap={{ scale: 0.95 }}
-                                    className="group relative px-6 sm:px-8 py-3 sm:py-4 bg-white text-black rounded-full font-bold text-base sm:text-lg flex items-center justify-center gap-2 sm:gap-3 overflow-hidden w-full sm:w-auto cursor-hover"
+                                    className="group relative px-6 sm:px-8 py-3 sm:py-4 bg-white text-black rounded-full font-bold text-base sm:text-lg flex items-center justify-center gap-2 sm:gap-3 overflow-hidden w-full sm:w-auto"
                                 >
                                     <div className="absolute inset-0 bg-gradient-to-r from-purple-100 to-pink-100 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                                     <span className="relative flex items-center gap-2">
@@ -211,7 +209,7 @@ export default function ClientHome({ projects, socialLinks, resumeUrl }: { proje
                                     href="#projects"
                                     whileHover={hoverScale}
                                     whileTap={{ scale: 0.95 }}
-                                    className="px-6 sm:px-8 py-3 sm:py-4 rounded-full border border-white/20 hover:bg-white/5 hover:border-white/40 transition-colors font-medium text-base sm:text-lg flex items-center justify-center gap-2 sm:gap-3 md:backdrop-blur-sm w-full sm:w-auto cursor-hover"
+                                    className="px-6 sm:px-8 py-3 sm:py-4 rounded-full border border-white/20 hover:bg-white/5 hover:border-white/40 transition-colors font-medium text-base sm:text-lg flex items-center justify-center gap-2 sm:gap-3 md:backdrop-blur-sm w-full sm:w-auto"
                                 >
                                     View Projects
                                     <ArrowDownCircle className="w-5 h-5" />
@@ -268,7 +266,7 @@ export default function ClientHome({ projects, socialLinks, resumeUrl }: { proje
                                     boxShadow: "0 20px 40px -15px rgba(168, 85, 247, 0.15)",
                                 }}
                                 transition={{ type: "spring", stiffness: 300, damping: 15 }}
-                                className="glass-card p-4 sm:p-5 md:p-6 rounded-2xl sm:rounded-3xl flex flex-col items-center justify-center gap-3 sm:gap-4 md:gap-5 text-center group hover:bg-white/[0.06] transition-colors duration-500 border border-white/5 hover:border-white/15 cursor-hover"
+                                className="glass-card p-4 sm:p-5 md:p-6 rounded-2xl sm:rounded-3xl flex flex-col items-center justify-center gap-3 sm:gap-4 md:gap-5 text-center group hover:bg-white/[0.06] transition-colors duration-300 border border-white/5 hover:border-white/15"
                             >
                                 <div className="p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-white/5 group-hover:bg-gradient-to-br group-hover:from-purple-500/20 group-hover:to-pink-500/20 transition-colors duration-500 ring-1 ring-white/10 group-hover:ring-purple-500/30">
                                     {skill.icon}
@@ -314,15 +312,17 @@ export default function ClientHome({ projects, socialLinks, resumeUrl }: { proje
                                         index={index}
                                         className="h-full"
                                     >
-                                        <div className="group flex flex-col h-full rounded-2xl sm:rounded-[2rem] overflow-hidden bg-black/50 md:backdrop-blur-md border border-white/10 hover:border-white/20 transition-colors duration-500">
+                                        <div className="group flex flex-col h-full rounded-2xl sm:rounded-[2rem] overflow-hidden bg-[#0a0a0a] border border-white/10 hover:border-white/20 transition-colors duration-300">
                                             <div className="relative w-full aspect-video overflow-hidden bg-gray-900/80 border-b border-white/5">
-                                                <div className={`absolute inset-0 bg-gradient-to-br ${theme.gradient} opacity-10 group-hover:opacity-30 transition-opacity duration-700 z-0`}></div>
+                                                <div className={`absolute inset-0 bg-gradient-to-br ${theme.gradient} opacity-10 group-hover:opacity-30 transition-opacity duration-500 z-0`}></div>
 
                                                 {imageUrl ? (
                                                     <img
                                                         src={imageUrl}
                                                         alt={project.title || "Project Image"}
-                                                        className="w-full h-full object-cover z-10 transform scale-100 group-hover:scale-110 transition-transform duration-1000 ease-out opacity-90 group-hover:opacity-100 absolute inset-0"
+                                                        loading="lazy"
+                                                        decoding="async"
+                                                        className="w-full h-full object-cover z-10 transform scale-100 group-hover:scale-105 transition-transform duration-500 ease-out opacity-90 group-hover:opacity-100 absolute inset-0"
                                                     />
                                                 ) : (
                                                     <div className="absolute inset-0 flex items-center justify-center text-white/30 text-sm font-medium tracking-widest uppercase z-10">
@@ -382,11 +382,11 @@ export default function ClientHome({ projects, socialLinks, resumeUrl }: { proje
                 </section>
 
                 <section id="contact" className="py-16 sm:py-20 md:py-32 text-center overflow-hidden relative">
-                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-3xl h-full max-h-[500px] bg-gradient-to-r from-purple-500/10 to-pink-500/10 blur-[100px] rounded-full pointer-events-none" />
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-3xl h-full max-h-[500px] bg-[radial-gradient(ellipse_at_center,rgba(168,85,247,0.1)_0%,transparent_70%)] rounded-full pointer-events-none" />
 
                     <SectionReveal>
                         <motion.div
-                            className="relative z-10 max-w-4xl mx-auto bg-white/[0.04] md:backdrop-blur-2xl p-6 sm:p-10 md:p-16 rounded-2xl sm:rounded-[2rem] md:rounded-[3rem] border border-white/10 shadow-2xl group overflow-hidden"
+                            className="relative z-10 max-w-4xl mx-auto bg-[#0a0a0a]/90 md:backdrop-blur-md p-6 sm:p-10 md:p-16 rounded-2xl sm:rounded-[2rem] md:rounded-[3rem] border border-white/10 shadow-2xl group overflow-hidden"
                         >
                             <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-purple-500/50 to-transparent animate-gradient-shift bg-[length:200%_auto]" />
 

@@ -47,9 +47,9 @@ const productionSkills = [
 export default function IndustrialSkills() {
     return (
         <section id="engineering-skills" className="py-32 relative border-t border-dashed border-white/10 overflow-hidden">
-            {/* Background Glows */}
-            <div className="absolute top-1/2 left-0 -translate-y-1/2 w-[500px] h-[500px] bg-amber-500/10 blur-[120px] rounded-full mix-blend-screen pointer-events-none hidden md:block" />
-            <div className="absolute top-1/2 right-0 -translate-y-1/2 w-[500px] h-[500px] bg-cyan-500/10 blur-[120px] rounded-full mix-blend-screen pointer-events-none hidden md:block" />
+            {/* Background Glows (Optimized Radial Gradients) */}
+            <div className="absolute top-1/2 left-0 -translate-y-1/2 w-[500px] h-[500px] bg-[radial-gradient(circle,rgba(245,158,11,0.08)_0%,transparent_70%)] rounded-full pointer-events-none hidden md:block" />
+            <div className="absolute top-1/2 right-0 -translate-y-1/2 w-[500px] h-[500px] bg-[radial-gradient(circle,rgba(6,182,212,0.08)_0%,transparent_70%)] rounded-full pointer-events-none hidden md:block" />
 
             <div className="relative z-10 container mx-auto px-6 md:px-12 lg:px-24">
                 <motion.div
