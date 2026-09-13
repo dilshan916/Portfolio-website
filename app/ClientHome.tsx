@@ -123,11 +123,11 @@ export default function ClientHome({ projects, socialLinks, resumeUrl }: { proje
     ];
 
     return (
-        <div className="min-h-screen bg-[#050505] text-white selection:bg-pink-500/30 overflow-x-hidden font-sans w-full max-w-full">
+        <div className="min-h-screen bg-[#050505] text-white selection:bg-pink-500/30 overflow-x-hidden font-sans w-full max-w-full" suppressHydrationWarning>
 
             <AnimatedBackground />
 
-            <main className="relative z-10 container mx-auto px-4 sm:px-6 md:px-12 lg:px-24">
+            <main className="relative z-10 container mx-auto px-4 sm:px-6 md:px-12 lg:px-24" suppressHydrationWarning>
 
                 <header className="flex justify-between items-center py-5 md:py-8">
                     <motion.div
@@ -232,9 +232,13 @@ export default function ClientHome({ projects, socialLinks, resumeUrl }: { proje
                             <motion.div
                                 key={index}
                                 variants={fadeInUpSpring}
+                                suppressHydrationWarning
                                 className="glass-card p-4 sm:p-5 md:p-6 rounded-2xl sm:rounded-3xl flex flex-col items-center justify-center gap-3 sm:gap-4 md:gap-5 text-center group hover:bg-white/[0.06] hover:-translate-y-1.5 transition-all duration-200 border border-white/5 hover:border-white/20"
                             >
-                                <div className="p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-white/5 group-hover:bg-gradient-to-br group-hover:from-purple-500/20 group-hover:to-pink-500/20 transition-colors duration-500 ring-1 ring-white/10 group-hover:ring-purple-500/30">
+                                <div
+                                    suppressHydrationWarning
+                                    className="p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-white/5 group-hover:bg-gradient-to-br group-hover:from-purple-500/20 group-hover:to-pink-500/20 transition-colors duration-500 ring-1 ring-white/10 group-hover:ring-purple-500/30"
+                                >
                                     {skill.icon}
                                 </div>
                                 <div>

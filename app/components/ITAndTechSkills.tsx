@@ -38,7 +38,7 @@ const softwareSkills = [
 
 export default function ITAndTechSkills() {
     return (
-        <section id="it-tech-skills" className="pb-32 pt-10 relative overflow-hidden">
+        <section id="it-tech-skills" suppressHydrationWarning className="pb-32 pt-10 relative overflow-hidden">
             {/* Background Glows (Optimized Radial Gradients) */}
             <div className="absolute top-1/2 left-0 -translate-y-1/2 w-[500px] h-[500px] bg-[radial-gradient(circle,rgba(16,185,129,0.08)_0%,transparent_70%)] rounded-full pointer-events-none hidden md:block" />
             <div className="absolute top-1/2 right-0 -translate-y-1/2 w-[500px] h-[500px] bg-[radial-gradient(circle,rgba(139,92,246,0.08)_0%,transparent_70%)] rounded-full pointer-events-none hidden md:block" />
